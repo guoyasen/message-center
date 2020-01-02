@@ -229,7 +229,7 @@
                 <version>2.0.1.RELEASE</version>
                 <configuration>
                     <fork>true</fork>
-                    <mainClass>com.iquantex.FundApplication</mainClass>
+                    <mainClass>com.iquantex.tspweb.TspWebApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
