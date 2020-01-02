@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.InstGraphMapper">
+  <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.InstGraph">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="INSTCODE" jdbcType="VARCHAR" property="instcode" />
+    <result column="SYSTEM_TIME" jdbcType="TIMESTAMP" property="systemTime" />
+    <result column="EXECUTIONCODE" jdbcType="VARCHAR" property="executioncode" />
+    <result column="INSTPRC" jdbcType="VARCHAR" property="instprc" />
+    <result column="AVGPRICES" jdbcType="VARCHAR" property="avgprices" />
+    <result column="AVGAMOUNTS" jdbcType="VARCHAR" property="avgamounts" />
+    <result column="EFFECTIVEAVGPRC" jdbcType="VARCHAR" property="effectiveavgprc" />
+    <result column="INSTDEALAVGPRC" jdbcType="VARCHAR" property="instdealavgprc" />
+    <result column="DEALPRICELIST" jdbcType="VARCHAR" property="dealpricelist" />
+    <result column="DEALAMOUNTLIST" jdbcType="VARCHAR" property="dealamountlist" />
+    <result column="DEALTIMELIST" jdbcType="VARCHAR" property="dealtimelist" />
+    <result column="QUOTETIMES" jdbcType="VARCHAR" property="quotetimes" />
+    <result column="EFFECTIVEAVGAMT" jdbcType="VARCHAR" property="effectiveavgamt" />
+    <result column="INSTACCUMULATEDDEALAMT" jdbcType="VARCHAR" property="instaccumulateddealamt" />
+    <result column="COMPLETEDRATIO" jdbcType="VARCHAR" property="completedratio" />
+    <result column="PRICEDIFF" jdbcType="VARCHAR" property="pricediff" />
+  </resultMap>
+</mapper>

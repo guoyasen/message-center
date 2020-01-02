@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.RuleResultFactorMapper">
+  <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.RuleResultFactor">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="RULE_RESULT_ID" jdbcType="DECIMAL" property="ruleResultId" />
+    <result column="FACTOR_KEY" jdbcType="VARCHAR" property="factorKey" />
+    <result column="FACTOR_VALUE" jdbcType="VARCHAR" property="factorValue" />
+    <result column="FACTOR_KEY_VALUE" jdbcType="VARCHAR" property="factorKeyValue" />
+    <result column="SYSTEM_TIME" jdbcType="TIMESTAMP" property="systemTime" />
+    <result column="RULE_ID" jdbcType="VARCHAR" property="ruleId" />
+    <result column="RESULT_STATUS" jdbcType="DECIMAL" property="resultStatus" />
+  </resultMap>
+</mapper>

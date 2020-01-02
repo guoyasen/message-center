@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.RuleMusicMapper">
+    <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.RuleMusic">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="FUTURESTYPE" jdbcType="VARCHAR" property="futurestype"/>
+        <result column="MUSIC" jdbcType="CLOB" property="music"/>
+    </resultMap>
+
+    <update id="updateRuleMusic" parameterType="com.iquantex.tspweb.model.RuleMusic">
+        update rule_music
+        <trim prefix="set" suffixOverrides=",">
+            <if test="music !=null">music= #{music,jdbcType=CLOB},</if>
+        </trim>
+        where futurestype = #{futurestype}
+    </update>
+    <select id="getRuleMusic" resultType="com.iquantex.tspweb.model.RuleMusic">
+        select futurestype,music from RULE_MUSIC
+        <if test="futuresType !=null">where futurestype= #{futuresType}</if>
+    </select>
+</mapper>

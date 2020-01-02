@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.RuleParameterMapper">
+    <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.RuleParameter">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="FUND_CODE" jdbcType="VARCHAR" property="fundCode"/>
+        <id column="RULE_ID" jdbcType="VARCHAR" property="ruleId"/>
+        <result column="D_PARAM1" jdbcType="DECIMAL" property="dParam1"/>
+        <result column="D_PARAM2" jdbcType="DECIMAL" property="dParam2"/>
+        <result column="D_PARAM3" jdbcType="DECIMAL" property="dParam3"/>
+        <result column="D_PARAM4" jdbcType="DECIMAL" property="dParam4"/>
+        <result column="D_PARAM5" jdbcType="DECIMAL" property="dParam5"/>
+        <result column="V_PARAM1" jdbcType="VARCHAR" property="vParam1"/>
+        <result column="V_PARAM2" jdbcType="VARCHAR" property="vParam2"/>
+        <result column="V_PARAM3" jdbcType="VARCHAR" property="vParam3"/>
+        <result column="V_PARAM4" jdbcType="VARCHAR" property="vParam4"/>
+        <result column="V_PARAM5" jdbcType="VARCHAR" property="vParam5"/>
+        <result column="D_PARAM1_NAME" jdbcType="VARCHAR" property="dParam1Name"/>
+        <result column="D_PARAM2_NAME" jdbcType="VARCHAR" property="dParam2Name"/>
+        <result column="D_PARAM3_NAME" jdbcType="VARCHAR" property="dParam3Name"/>
+        <result column="D_PARAM4_NAME" jdbcType="VARCHAR" property="dParam4Name"/>
+        <result column="D_PARAM5_NAME" jdbcType="VARCHAR" property="dParam5Name"/>
+        <result column="V_PARAM1_NAME" jdbcType="VARCHAR" property="vParam1Name"/>
+        <result column="V_PARAM2_NAME" jdbcType="VARCHAR" property="vParam2Name"/>
+        <result column="V_PARAM3_NAME" jdbcType="VARCHAR" property="vParam3Name"/>
+        <result column="V_PARAM4_NAME" jdbcType="VARCHAR" property="vParam4Name"/>
+        <result column="V_PARAM5_NAME" jdbcType="VARCHAR" property="vParam5Name"/>
+        <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+
+  <select id="selectRuleParameter" resultType="com.iquantex.tspweb.model.RuleParameter">
+    select * from rule_parameter  where fund_code = #{fundCode} and rule_id = #{ruleId}
+  </select>
+
+    <update id="updateRuleParameter" parameterType="com.iquantex.tspweb.model.RuleParameter">
+        update rule_parameter
+        <trim prefix="set" suffixOverrides=",">
+            <if test="dParam1 !=null">d_param1= #{dParam1},</if>
+            <if test="dParam2 !=null">d_param2= #{dParam2},</if>
+            <if test="dParam3 !=null">d_param3= #{dParam3},</if>
+            <if test="dParam4 !=null">d_param4= #{dParam4},</if>
+            <if test="dParam5 !=null">d_param5= #{dParam5},</if>
+            <if test="vParam1 !=null">v_param1= #{vParam1},</if>
+            <if test="vParam2 !=null">v_param2= #{vParam2},</if>
+            <if test="vParam3 !=null">v_param3= #{vParam3},</if>
+            <if test="vParam4 !=null">v_param4= #{vParam4},</if>
+            <if test="vParam5 !=null">v_param5= #{vParam5},</if>
+            <if test="dParam1Name !=null">d_param1_name= #{dParam1Name},</if>
+            <if test="dParam2Name !=null">d_param2_name= #{dParam2Name},</if>
+            <if test="dParam3Name !=null">d_param3_name= #{dParam3Name},</if>
+            <if test="dParam4Name !=null">d_param4_name= #{dParam4Name},</if>
+            <if test="dParam5Name !=null">d_param5_name= #{dParam5Name},</if>
+            <if test="vParam1Name !=null">v_param1_name= #{vParam1Name},</if>
+            <if test="vParam2Name !=null">v_param2_name= #{vParam2Name},</if>
+            <if test="vParam3Name !=null">v_param3_name= #{vParam3Name},</if>
+            <if test="vParam4Name !=null">v_param4_name= #{vParam4Name},</if>
+            <if test="vParam5Name !=null">v_param5_name= #{vParam5Name},</if>
+            <if test="remark !=null">remark= #{remark},</if>
+        </trim>
+        where fund_code = #{fundCode} and rule_id = #{ruleId}
+    </update>
+
+    <select id="selectRuleParameterView" resultType="com.iquantex.tspweb.model.RuleParameterView">
+        select FUND_CODE, RULE_ID, PARAMCODE, PARAMVALUE, REMARK, PARAMNAME from RULE_PARAMETER_VW
+    </select>
+
+    <select id="selectRuleParameterViewByFundCode" resultType="com.iquantex.tspweb.model.RuleParameterView">
+        select FUND_CODE, RULE_ID, PARAMCODE, PARAMVALUE, REMARK, PARAMNAME from RULE_PARAMETER_VW
+        where fund_code=#{fundCode}
+    </select>
+
+    <select id="selectRuleParameterViewByFundCodeAndRuleId" resultType="com.iquantex.tspweb.model.RuleParameterView">
+        select FUND_CODE, RULE_ID, PARAMCODE, PARAMVALUE, REMARK, PARAMNAME from RULE_PARAMETER_VW
+        where fund_code=#{fundCode} and RULE_ID=#{ruleId}
+    </select>
+
+    <select id="selectRuleParameterViewByKey" resultType="com.iquantex.tspweb.model.RuleParameterView">
+        select FUND_CODE, RULE_ID, PARAMCODE, PARAMVALUE, REMARK, PARAMNAME from RULE_PARAMETER_VW
+        where fund_code=#{fundCode} and RULE_ID=#{ruleId} and PARAMCODE=#{paramCode}
+    </select>
+
+    <select id="selectRuleCustomize" resultType="com.iquantex.tspweb.model.RuleCustomize">
+        SELECT  USER_ID, RULE_ID, NAME, CUE_FORMAT, INFO, SPEED, VOLUME, TO_CHAR(WM_CONCAT(FACTOR)) AS FACTOR , TO_CHAR(WM_CONCAT(FACTOR_NAME))AS FACTOR_NAME  FROM (
+        SELECT A.USER_ID,A.RULE_ID,B.NAME,A.CUE_FORMAT,A.INFO,A.SPEED,A.VOLUME,C.FACTOR,C.FACTOR_NAME FROM RULE_CUSTOMIZE A
+        LEFT JOIN RULE B ON A.RULE_ID=B.ID
+        LEFT JOIN RULE_FACTOR C ON A.RULE_ID=C.RULE_ID) D
+        WHERE D.USER_ID=#{userId}
+        GROUP BY USER_ID, RULE_ID, NAME, CUE_FORMAT, INFO, SPEED, VOLUME
+    </select>
+
+    <select id="selectRuleCustomizeDetail" resultType="com.iquantex.tspweb.model.RuleCustomize">
+        SELECT  USER_ID, RULE_ID, NAME, CUE_FORMAT, INFO, SPEED, VOLUME, TO_CHAR(WM_CONCAT(FACTOR)) AS FACTOR , TO_CHAR(WM_CONCAT(FACTOR_NAME))AS FACTOR_NAME  FROM (
+        SELECT A.USER_ID,A.RULE_ID,B.NAME,A.CUE_FORMAT,A.INFO,A.SPEED,A.VOLUME,C.FACTOR,C.FACTOR_NAME FROM RULE_CUSTOMIZE A
+        LEFT JOIN RULE B ON A.RULE_ID=B.ID
+        LEFT JOIN RULE_FACTOR C ON A.RULE_ID=C.RULE_ID) D
+        WHERE D.USER_ID=#{userId} AND D.RULE_ID=#{ruleId}
+        GROUP BY USER_ID, RULE_ID, NAME, CUE_FORMAT, INFO, SPEED, VOLUME
+    </select>
+
+    <select id="selectInitRuleCustomize" resultType="com.iquantex.tspweb.model.RuleCustomize">
+        SELECT  #{userId} AS USER_ID , RULE_ID, NAME, CUE_FORMAT, INFO, SPEED, VOLUME, TO_CHAR(WM_CONCAT(FACTOR)) AS FACTOR , TO_CHAR(WM_CONCAT(FACTOR_NAME))AS FACTOR_NAME  FROM (
+        SELECT A.ID AS RULE_ID,A.NAME,A.CUE_FORMAT,A.INFO,A.SPEED,A.VOLUME,C.FACTOR,C.FACTOR_NAME FROM RULE A
+        LEFT JOIN RULE_FACTOR C ON A.ID=C.RULE_ID)
+        WHERE  RULE_ID =#{ruleId}
+        GROUP BY  RULE_ID, NAME, CUE_FORMAT, INFO, SPEED, VOLUME
+    </select>
+
+    <update id="updateRuleCustomize" parameterType="com.iquantex.tspweb.model.RuleCustomize">
+        UPDATE RULE_CUSTOMIZE
+        <trim prefix="set" suffixOverrides=",">
+            <if test="cueFormat !=null">CUE_FORMAT= #{cueFormat},</if>
+            <if test="info !=null">INFO= #{info},</if>
+            <if test="speed !=null">SPEED= #{speed},</if>
+            <if test="volume !=null">VOLUME= #{volume},</if>
+        </trim>
+        where USER_ID = #{userId} and RULE_ID = #{ruleId}
+    </update>
+</mapper>

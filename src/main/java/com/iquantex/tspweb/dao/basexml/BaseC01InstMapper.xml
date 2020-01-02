@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.C01InstMapper">
+  <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.C01Inst">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="INST_ID" jdbcType="DECIMAL" property="instId" />
+    <result column="INST_MDFY_ORDR" jdbcType="DECIMAL" property="instMdfyOrdr" />
+    <result column="TRDN_DT" jdbcType="DECIMAL" property="trdnDt" />
+    <result column="FND_SRL_ID" jdbcType="DECIMAL" property="fndSrlId" />
+    <result column="PRTF_SRL_ID" jdbcType="DECIMAL" property="prtfSrlId" />
+    <result column="INST_TYP" jdbcType="VARCHAR" property="instTyp" />
+    <result column="INST_TRGT_TYP" jdbcType="VARCHAR" property="instTrgtTyp" />
+    <result column="INST_TRGT_VL" jdbcType="DECIMAL" property="instTrgtVl" />
+    <result column="INST_TRGT_BS" jdbcType="DECIMAL" property="instTrgtBs" />
+    <result column="CNTR" jdbcType="DECIMAL" property="cntr" />
+    <result column="STTL_SPD" jdbcType="DECIMAL" property="sttlSpd" />
+    <result column="BUY_BCK_DYS" jdbcType="DECIMAL" property="buyBckDys" />
+    <result column="INST_STRT_DT" jdbcType="DECIMAL" property="instStrtDt" />
+    <result column="INST_END_DT" jdbcType="DECIMAL" property="instEndDt" />
+    <result column="INST_STRT_TM" jdbcType="DECIMAL" property="instStrtTm" />
+    <result column="INST_END_TM" jdbcType="DECIMAL" property="instEndTm" />
+    <result column="INST_ODR_DT" jdbcType="DECIMAL" property="instOdrDt" />
+    <result column="INST_ODR_TM" jdbcType="DECIMAL" property="instOdrTm" />
+    <result column="INST_ORDR_PRSN" jdbcType="DECIMAL" property="instOrdrPrsn" />
+    <result column="ADT_TM" jdbcType="DECIMAL" property="adtTm" />
+    <result column="ADTR" jdbcType="DECIMAL" property="adtr" />
+    <result column="ADT_RFS_RSN" jdbcType="VARCHAR" property="adtRfsRsn" />
+    <result column="DSTR_TM" jdbcType="DECIMAL" property="dstrTm" />
+    <result column="DSTR" jdbcType="DECIMAL" property="dstr" />
+    <result column="DSTR_RFS_RSN" jdbcType="VARCHAR" property="dstrRfsRsn" />
+    <result column="WTHD_TM" jdbcType="DECIMAL" property="wthdTm" />
+    <result column="RVCT_PRSN" jdbcType="DECIMAL" property="rvctPrsn" />
+    <result column="WTHD_RSN" jdbcType="VARCHAR" property="wthdRsn" />
+    <result column="EXCT" jdbcType="DECIMAL" property="exct" />
+    <result column="INST_STT" jdbcType="VARCHAR" property="instStt" />
+    <result column="ADT_STT" jdbcType="VARCHAR" property="adtStt" />
+    <result column="DSTR_STT" jdbcType="VARCHAR" property="dstrStt" />
+    <result column="WTHD_DSTR_STT" jdbcType="VARCHAR" property="wthdDstrStt" />
+    <result column="CMMS_CMPL_STT" jdbcType="VARCHAR" property="cmmsCmplStt" />
+    <result column="DL_CMPL_STT" jdbcType="VARCHAR" property="dlCmplStt" />
+    <result column="TMST" jdbcType="TIMESTAMP" property="tmst" />
+    <result column="INST_BSNS_CLSS" jdbcType="VARCHAR" property="instBsnsClss" />
+    <result column="DSTR_DT" jdbcType="DECIMAL" property="dstrDt" />
+    <result column="RSRC_SYST" jdbcType="VARCHAR" property="rsrcSyst" />
+    <result column="BTCH_DT" jdbcType="VARCHAR" property="btchDt" />
+    <result column="ETL_SRC_TBL_NM" jdbcType="VARCHAR" property="etlSrcTblNm" />
+    <result column="ETL_JOB_NM" jdbcType="VARCHAR" property="etlJobNm" />
+  </resultMap>
+
+  <select id="getAll" resultType="com.iquantex.tspweb.model.C01Inst">
+    SELECT * FROM ${tsp_c}.C01_INST
+  </select>
+</mapper>

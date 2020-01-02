@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.iquantex</groupId>
+    <artifactId>tsp-web</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>tsp-web</name>
+    <description>Demo project for Spring Boot</description>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.1.RELEASE</version>
+    </parent>
+
+    <properties>
+        <tsp-api.version>2.0.1-SNAPSHOT</tsp-api.version>
+        <tsp-const-api.version>2.0.1-SNAPSHOT</tsp-const-api.version>
+        <tsp-event.version>1.5.0-SNAPSHOT</tsp-event.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.62</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.iquantex</groupId>
+            <artifactId>mybatis-mapper</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.5</version>
+        </dependency>
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>1.1.4</version>
+        </dependency>
+        <!-- redis相关 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.4.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iquantex</groupId>
+            <artifactId>tsp-api</artifactId>
+            <version>${tsp-api.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/tsp-api-2.0.1-SNAPSHOT.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.iquantex</groupId>
+            <artifactId>tsp-const-api</artifactId>
+            <version>${tsp-const-api.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/tsp-const-api-2.0.1-SNAPSHOT.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+
+        <!-- api -->
+        <dependency>
+            <groupId>com.iquantex</groupId>
+            <artifactId>tsp-event</artifactId>
+            <version>${tsp-event.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/tsp-event-1.5.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+
+        <!--amqp-starter-->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <version>2.1.7.RELEASE</version>
+        </dependency>
+        <!-- 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.5</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mybatis.spring.boot</groupId>
+                    <artifactId>mybatis-spring-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- fullgoal -->
+<!--        <dependency>-->
+<!--            <groupId>com.ctrip.framework.apollo</groupId>-->
+<!--            <artifactId>apollo-client</artifactId>-->
+<!--            <version>0.10.0</version>-->
+<!--        </dependency>-->
+
+        <!-- common -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.janino</groupId>
+            <artifactId>janino</artifactId>
+        </dependency>
+
+        <!--统一交换平台相关-->
+        <dependency>
+            <groupId>com.fullgoal.gep</groupId>
+            <artifactId>gepzkclient</artifactId>
+            <version>1.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/gepzkclient-1.1.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.adyliu</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.6</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.apache.logging.log4j</groupId>-->
+            <!--<artifactId>log4j-core</artifactId>-->
+        <!--</dependency>-->
+
+    </dependencies>
+
+    <build>
+        <!-- 写死app名字， 方便dockerfile统一编写 -->
+        <finalName>app</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+
+
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.0.1.RELEASE</version>
+                <configuration>
+                    <fork>true</fork>
+                    <mainClass>com.iquantex.FundApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- 在打包的时候，生成git.properties文件到jar包中, 方便后续定位版本信息 -->
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>2.2.4</version>
+                <configuration>
+                    <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                </configuration>
+            </plugin>
+            <!-- docker镜像打包插件 -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <!-- 注意这里！！！ phoenix这个需要替换成自己项目的组名  -->
+                    <imageName>harbor.iquantex.com/common/${project.artifactId}</imageName>
+                    <serverId>quantex-docker-registry</serverId>
+                    <dockerDirectory>docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

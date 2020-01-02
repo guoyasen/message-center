@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.EtfPriceDiffVwMapper">
+  <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.EtfPriceDiffVw">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="FUNDCODE" jdbcType="VARCHAR" property="fundcode" />
+    <result column="BIDPRICE1" jdbcType="VARCHAR" property="bidprice1" />
+    <result column="BIDAMOUNT1" jdbcType="VARCHAR" property="bidamount1" />
+    <result column="OFFERPRICE1" jdbcType="VARCHAR" property="offerprice1" />
+    <result column="OFFERAMOUNT1" jdbcType="VARCHAR" property="offeramount1" />
+    <result column="PRICEDIFF" jdbcType="VARCHAR" property="pricediff" />
+    <result column="ETFLASTPRICE" jdbcType="VARCHAR" property="etflastprice" />
+    <result column="QUOTETIMES" jdbcType="VARCHAR" property="quotetimes" />
+  </resultMap>
+</mapper>

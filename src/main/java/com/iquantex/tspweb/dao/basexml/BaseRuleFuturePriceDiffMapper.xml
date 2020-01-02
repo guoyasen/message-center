@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.RuleFuturePriceDiffMapper">
+    <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.RuleFuturePriceDiff">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="USER_ID" jdbcType="VARCHAR" property="userId"/>
+        <result column="FUTUREA_CODE" jdbcType="VARCHAR" property="futureaCode"/>
+        <result column="FUTUREB_CODE" jdbcType="VARCHAR" property="futurebCode"/>
+        <result column="PRICE_DIFF" jdbcType="DECIMAL" property="priceDiff"/>
+    </resultMap>
+
+    <select id="selectByKey" resultType="com.iquantex.tspweb.model.RuleFuturePriceDiff">
+        select user_id,
+        futurea_code,
+        futureb_code,
+        price_diff
+        from rule_future_price_diff
+        where 1=1
+        <if test=" userId != null and userId != '' ">
+            AND user_id = #{userId}
+        </if>
+        <if test=" futureACode != null and futureACode != '' ">
+            AND futurea_code = #{futureACode}
+        </if>
+        <if test=" futureBCode != null and futureBCode != '' ">
+            AND futureb_code = #{futureBCode}
+        </if>
+    </select>
+
+    <insert id="insertRuleFuturePriceDiff" parameterType="com.iquantex.tspweb.model.RuleFuturePriceDiff">
+    insert into rule_future_price_diff(user_id, futurea_code, futureb_code, price_diff)
+    values (#{userId},#{futureaCode},#{futurebCode},#{priceDiff})
+    </insert>
+
+    <delete id="deleteRuleFuturePriceDiff" parameterType="com.iquantex.tspweb.model.RuleFuturePriceDiff">
+    delete from rule_future_price_diff where user_id = #{userId} and futurea_code = #{futureaCode} and futureb_code = #{futurebCode}
+    </delete>
+</mapper>

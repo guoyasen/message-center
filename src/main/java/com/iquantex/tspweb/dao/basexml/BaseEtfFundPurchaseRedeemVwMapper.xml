@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.EtfFundPurchaseRedeemVwMapper">
+  <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.EtfFundPurchaseRedeemVw">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="FUNDCODE" jdbcType="VARCHAR" property="fundcode" />
+    <result column="YESTERDAYFUNDSHARE" jdbcType="VARCHAR" property="yesterdayfundshare" />
+    <result column="PURCHASE_AMOUNT" jdbcType="VARCHAR" property="purchaseAmount" />
+    <result column="REDEMPTION_AMOUNT" jdbcType="VARCHAR" property="redemptionAmount" />
+    <result column="PURCHASE_RATIO" jdbcType="VARCHAR" property="purchaseRatio" />
+    <result column="REDEMPTION_RATIO" jdbcType="VARCHAR" property="redemptionRatio" />
+  </resultMap>
+
+  <select id="selectByFundCode" resultMap="BaseResultMap">
+    select * from ETF_FUND_PURCHASE_REDEEM_VW where  fundcode=#{fundcode}
+  </select>
+</mapper>

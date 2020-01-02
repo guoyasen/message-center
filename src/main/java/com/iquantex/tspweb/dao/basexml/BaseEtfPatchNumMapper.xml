@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.EtfPatchNumMapper">
+  <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.EtfPatchNum">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="FUNDCODE" jdbcType="VARCHAR" property="fundcode" />
+    <result column="SYSTEM_TIME" jdbcType="TIMESTAMP" property="systemTime" />
+    <result column="NEEDPATCHQTY" jdbcType="VARCHAR" property="needpatchqty" />
+    <result column="COMPLETEPATCHQTY" jdbcType="VARCHAR" property="completepatchqty" />
+    <result column="DIFFERENCE" jdbcType="VARCHAR" property="difference" />
+  </resultMap>
+</mapper>

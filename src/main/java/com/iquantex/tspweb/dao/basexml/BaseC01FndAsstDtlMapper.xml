@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.C01FndAsstDtlMapper">
+  <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.C01FndAsstDtl">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="TRDN_DT" jdbcType="VARCHAR" property="trdnDt" />
+    <result column="FNDS_NMBR" jdbcType="VARCHAR" property="fndsNmbr" />
+    <result column="TRST_ST" jdbcType="VARCHAR" property="trstSt" />
+    <result column="SHRH_CD" jdbcType="VARCHAR" property="shrhCd" />
+    <result column="HLDN_LNG_SHRT_IDNT" jdbcType="VARCHAR" property="hldnLngShrtIdnt" />
+    <result column="SCRT_INTR_CD" jdbcType="VARCHAR" property="scrtIntrCd" />
+    <result column="BGNN_QNTT" jdbcType="DECIMAL" property="bgnnQntt" />
+    <result column="CRRN_QNTT" jdbcType="DECIMAL" property="crrnQntt" />
+    <result column="TDY_LNG_QNTT" jdbcType="DECIMAL" property="tdyLngQntt" />
+    <result column="TDY_SHRT_QNTT" jdbcType="DECIMAL" property="tdyShrtQntt" />
+    <result column="TDY_LNG_AMNT" jdbcType="DECIMAL" property="tdyLngAmnt" />
+    <result column="TDY_SHRT_AMNT" jdbcType="DECIMAL" property="tdyShrtAmnt" />
+    <result column="RSRC_SYST" jdbcType="VARCHAR" property="rsrcSyst" />
+    <result column="BTCH_DT" jdbcType="VARCHAR" property="btchDt" />
+    <result column="ETL_SRC_TBL_NM" jdbcType="VARCHAR" property="etlSrcTblNm" />
+    <result column="ETL_JOB_NM" jdbcType="VARCHAR" property="etlJobNm" />
+  </resultMap>
+
+  <select id="getAll" resultType="com.iquantex.tspweb.model.C01FndAsstDtl">
+    SELECT a.*
+    FROM ${tsp_c}.C01_FND_ASST_DTL a
+      LEFT JOIN (
+            SELECT * FROM ${tsp_c}.C00_CSTM_MPPN_CD
+            WHERE INTR_CD_RSRC_SYST = 'O32'
+            ) b ON a.SCRT_INTR_CD = b.INTR_CD
+    WHERE a.CRRN_QNTT != 0 AND b.SCRT_CD IS NOT NULL
+  </select>
+</mapper>

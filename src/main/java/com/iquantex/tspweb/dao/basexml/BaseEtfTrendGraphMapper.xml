@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.EtfTrendGraphMapper">
+  <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.EtfTrendGraph">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="FUNDCODE" jdbcType="VARCHAR" property="fundcode" />
+    <result column="SYSTEM_TIME" jdbcType="VARCHAR" property="systemTime" />
+    <result column="IOPVCHG" jdbcType="DECIMAL" property="iopvchg" />
+    <result column="INDEXCHG" jdbcType="DECIMAL" property="indexchg" />
+    <result column="ETFDEVIATION" jdbcType="DECIMAL" property="etfdeviation" />
+    <result column="ETFLASTPRICE" jdbcType="VARCHAR" property="etflastprice" />
+    <result column="IOPV" jdbcType="VARCHAR" property="iopv" />
+    <result column="ETFPREMIUMDISCOUNT" jdbcType="DECIMAL" property="etfpremiumdiscount" />
+  </resultMap>
+  <select id="selectByFundCd" resultMap="BaseResultMap">
+    select * from etf_trend_graph where fundcode=#{id}  ORDER  by system_time asc
+  </select>
+
+</mapper>

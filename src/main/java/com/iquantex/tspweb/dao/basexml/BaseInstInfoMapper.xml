@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.InstInfoMapper">
+  <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.InstInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="INST_CODE" jdbcType="VARCHAR" property="instCode" />
+    <result column="OMBINED_CODE" jdbcType="VARCHAR" property="ombinedCode" />
+    <result column="TRADE_DATE" jdbcType="DECIMAL" property="tradeDate" />
+    <result column="FUND_CODE" jdbcType="VARCHAR" property="fundCode" />
+    <result column="INST_CREATE_NAME" jdbcType="VARCHAR" property="instCreateName" />
+    <result column="INST_EXECUTION_NAME" jdbcType="VARCHAR" property="instExecutionName" />
+    <result column="SECU_CODE" jdbcType="VARCHAR" property="secuCode" />
+    <result column="TRADE_TYPE_CODE" jdbcType="DECIMAL" property="tradeTypeCode" />
+    <result column="AMT" jdbcType="DECIMAL" property="amt" />
+    <result column="QTY" jdbcType="DECIMAL" property="qty" />
+    <result column="SECU_TYPE" jdbcType="DECIMAL" property="secuType" />
+    <result column="O32_SECU_CODE" jdbcType="VARCHAR" property="o32SecuCode" />
+    <result column="IS_LONG_INST" jdbcType="DECIMAL" property="isLongInst" />
+    <result column="PRICE" jdbcType="DECIMAL" property="price" />
+    <result column="SYSTEM_TIME" jdbcType="TIMESTAMP" property="systemTime" />
+    <result column="O32_SECU_NAME" jdbcType="VARCHAR" property="o32SecuName" />
+  </resultMap>
+  <select id="getO32SecuCodeDict" resultType="com.iquantex.tspweb.param.DictoryVO">
+    SELECT
+    a.SCRT_INTR_CD id,
+    b.STND_CD_NT name
+    FROM ${tsp_c}.C01_SCRT_TRDN_INFR a
+    LEFT JOIN ${tsp_c}.C99_STND_CD b ON a.TRDN_MRKT_ID = b.STND_CD_VL
+    AND b.PRMT_TYP = 'O32交易所编码'
+    <where>
+      <if test=" code != null and code != '' ">
+        AND a.SCRT_INTR_CD = #{code}
+      </if>
+      <if test=" name != null and name != '' ">
+        AND b.STND_CD_NT = #{name}
+      </if>
+    </where>
+  </select>
+
+  <select id="query" resultType="com.iquantex.tspweb.param.InstInfoVO">
+    SELECT
+    info.*,
+    b.STND_CD_NT market_name
+    FROM INST_INFO info
+    LEFT JOIN ${tsp_c}.C01_SCRT_TRDN_INFR a ON info.O32_SECU_CODE = a.SCRT_INTR_CD
+    LEFT JOIN ${tsp_c}.C99_STND_CD b ON a.TRDN_MRKT_ID = b.STND_CD_VL
+    AND b.PRMT_TYP = 'O32交易所编码'
+    <where>
+      <if test=" fundCode != null and fundCode != '' ">
+        AND info.FUND_CODE = #{fundCode}
+      </if>
+      <if test=" secuCode != null and secuCode != '' " >
+        and info.SECU_CODE = #{secuCode}
+      </if>
+      <if test=" marketName != null and marketName != ''">
+        AND b.STND_CD_NT = #{marketName}
+      </if>
+      <if test=" instCreateName != null and instCreateName != '' " >
+        and info.INST_CREATE_NAME = #{instCreateName}
+      </if>
+      <if test=" instExecutionName != null and instExecutionName != '' " >
+        and info.INST_EXECUTION_NAME = #{instExecutionName}
+      </if>
+      <if test=" tradeTypeCode != null and tradeTypeCode != '' " >
+        and info.TRADE_TYPE_CODE = #{tradeTypeCode}
+      </if>
+    </where>
+  </select>
+</mapper>

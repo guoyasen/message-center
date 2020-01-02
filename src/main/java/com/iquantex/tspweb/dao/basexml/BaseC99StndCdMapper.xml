@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.C99StndCdMapper">
+  <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.C99StndCd">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="PRMT_TYP" jdbcType="VARCHAR" property="prmtTyp" />
+    <result column="CRRL_SYST" jdbcType="VARCHAR" property="crrlSyst" />
+    <result column="STND_CD_VL" jdbcType="VARCHAR" property="stndCdVl" />
+    <result column="STND_CD_NT" jdbcType="VARCHAR" property="stndCdNt" />
+    <result column="DATA_DT" jdbcType="VARCHAR" property="dataDt" />
+    <result column="DATA_SRC" jdbcType="VARCHAR" property="dataSrc" />
+    <result column="ETL_JOB_NM" jdbcType="VARCHAR" property="etlJobNm" />
+  </resultMap>
+
+  <select id="getInstCreateNameDict" resultType="com.iquantex.tspweb.param.DictoryVO">
+    SELECT cd.STND_CD_VL id, cd.STND_CD_NT name FROM ${tsp_c}.C99_STND_CD cd
+    <where>
+      PRMT_TYP = 'O32操作员编码' AND CRRL_SYST = 'O32'
+      <if test=" null != code">
+        AND cd.STND_CD_VL = #{code}
+      </if>
+      <if test=" null != name">
+        AND cd.STND_CD_NT = #{name}
+      </if>
+    </where>
+  </select>
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.C01FndAsstMapper">
+  <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.C01FndAsst">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="FND_SRL_ID" jdbcType="DECIMAL" property="fndSrlId" />
+    <result column="CRRN" jdbcType="VARCHAR" property="crrn" />
+    <result column="OCCR_DT" jdbcType="DECIMAL" property="occrDt" />
+    <result column="STCK_INDX_FTRS_MRGN_ACCN_BLNC" jdbcType="DECIMAL" property="stckIndxFtrsMrgnAccnBlnc" />
+    <result column="STCK_INDX_FTRS_MRGN" jdbcType="DECIMAL" property="stckIndxFtrsMrgn" />
+    <result column="FND_NET_ASST" jdbcType="DECIMAL" property="fndNetAsst" />
+    <result column="FND_NAV" jdbcType="DECIMAL" property="fndNav" />
+    <result column="FND_TTL_ASST" jdbcType="DECIMAL" property="fndTtlAsst" />
+    <result column="BTCH_DT" jdbcType="VARCHAR" property="btchDt" />
+    <result column="ETL_SRC_TBL_NM" jdbcType="VARCHAR" property="etlSrcTblNm" />
+    <result column="ETL_JOB_NM" jdbcType="VARCHAR" property="etlJobNm" />
+  </resultMap>
+
+  <select id="getAll" resultType="com.iquantex.tspweb.model.C01FndAsst">
+    select * FROM ${tsp_c}.C01_FND_ASST
+  </select>
+</mapper>

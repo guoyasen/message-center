@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.TspRoleMapper">
+  <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.TspRole">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ROLE_ID" jdbcType="DECIMAL" property="roleId" />
+    <result column="ROLE_NAME" jdbcType="VARCHAR" property="roleName" />
+    <result column="AUTHORIZATION" jdbcType="VARCHAR" property="authorization" />
+    <result column="BLACKLIST" jdbcType="VARCHAR" property="blacklist" />
+    <result column="RULELIST" jdbcType="VARCHAR" property="rulelist" />
+  </resultMap>
+  
+  <select id="selectRuleToUsersMap" resultType="java.util.HashMap">
+    select rule,to_char(wm_concat(USER_ID)) as users from (
+    select a.rule,b.user_id from (
+    select role_id ,ROLE_NAME, regexp_substr(RULELIST,'[^,]+',1,level) rule from tsp_role
+    connect by level &lt;=regexp_count(RULELIST,',')+1
+    and role_id = prior role_id
+    and prior dbms_random.value is not null)a
+    left join tsp_user b
+    on a.role_id=b.role_id)
+    group by RULE
+  </select>
+
+  <update id="updateTspRole" parameterType="com.iquantex.tspweb.model.TspRole">
+    update tsp_role
+    <trim prefix="set" suffixOverrides=",">
+      <if test="roleName != null">ROLE_NAME=#{roleName},</if>
+      <if test="authorization != null">AUTHORIZATION =#{authorization},</if>
+      <if test="blacklist != null">BLACKLIST=#{blacklist},</if>
+      <if test="rulelist != null">RULELIST=#{rulelist},</if>
+    </trim>
+    where ROLE_ID=#{roleId}
+  </update>
+
+  <insert id="insertTspRole" parameterType="com.iquantex.tspweb.model.TspRole" flushCache="true">
+    <selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="roleId">
+      select TSP_ROLE_ID_SEQ.nextval FROM  dual
+    </selectKey>
+    INSERT  into tsp_role
+    (ROLE_ID, ROLE_NAME, AUTHORIZATION ,BLACKLIST, RULELIST)
+    VALUES(
+    #{roleId,jdbcType=DECIMAL},
+    #{roleName,jdbcType = VARCHAR},
+    #{authorization,jdbcType = VARCHAR},
+    #{blacklist,jdbcType = VARCHAR},
+    #{rulelist,jdbcType = VARCHAR}
+    )
+  </insert>
+  
+  <delete id="deleteRoleDepartmentByUserId">
+    delete from tsp_role_department where role_id=#{roleId}  and DEPARTMENT_ID=(select DEPARTMENT_ID from tsp_user where USER_ID=#{userId})
+  </delete>
+  
+  <insert id="insertRoleDepartment">
+    insert into tsp_role_department select #{roleId},DEPARTMENT_ID from tsp_user where USER_ID=#{userId}
+  </insert>
+
+  <select id="selectRoleByUserId" resultType="com.iquantex.tspweb.model.TspRole">
+    select * from tsp_role
+    <if test=" user_id != null ">
+      where  role_id in (
+      select b.role_id from tsp_user  a
+      left join tsp_role_department b
+      on a.department_id=b.department_id
+      where a.user_id =#{user_id})
+      or (select count(*) from tsp_user_role where user_id=#{user_id} and role_id=1)>=1
+    </if>
+  </select>
+  
+  
+  <select id="selectRoleDetail" resultType="com.iquantex.tspweb.model.TspRoleDetail">
+    select * from (select role_Id as roleId, role_Name as roleName, AUTHORIZATION as menuList,to_char(wm_concat(USER_ID)) as userList
+    from (select a.role_id,
+    a.role_name,
+    a.authorization,
+    b.user_id
+     from tsp_role a
+     left join tsp_user_role b
+     on a.role_id=b.role_id)
+     group by ROLE_ID, ROLE_NAME, AUTHORIZATION)
+     where ROLEID=#{roleId}
+  </select>
+
+  
+  <delete id="deleteUserRole">
+    delete from tsp_user_role where role_id=#{roleId}
+  </delete>
+
+  <insert id="insertUserRole" parameterType="java.util.List">
+    <foreach collection="list" index="index" item="item" open="begin" close=";end;" separator=";">
+      insert into tsp_user_role(user_id,role_id)
+      VALUES (#{item},#{roleId})
+    </foreach>
+  </insert>
+
+  
+  <select id="selectUserMenuItems" resultType="String">
+   select to_char(wm_concat(AUTHORIZATION)) as AUTHORIZATION from (
+  select * from tsp_user_role a
+  left join tsp_role b on a.role_id=b.role_id
+  where a.user_id=#{userId})
+  </select>
+</mapper>

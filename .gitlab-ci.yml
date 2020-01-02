@@ -1,0 +1,27 @@
+stages:
+  - build
+  - deploy
+  - sonar
+
+build_image:
+  stage: build
+  script:
+    - mvn package && mvn docker:build -DpushImage -DdockerImageTags=$CI_COMMIT_REF_NAME
+  only:
+    - fixed
+    - master
+    - /(ci\-)+.*$/
+    - develop
+    - tags
+
+deploy_k8s:
+  stage: deploy
+  script:
+    - /deploy/deploy_k8s/scripts/deploy-demo.sh $CI_PROJECT_NAME $CI_COMMIT_REF_NAME
+  only:
+    - master
+
+sonar:
+  stage: sonar
+  script:
+    - mvn org.jacoco:jacoco-maven-plugin:prepare-agent clean install && mvn sonar:sonar

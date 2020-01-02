@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.ResultAllVMapper">
+  <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.ResultAllV">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="RULE_RESULT_ID" jdbcType="DECIMAL" property="ruleResultId" />
+    <result column="RULE_ID" jdbcType="VARCHAR" property="ruleId" />
+    <result column="RESULT_STATUS" jdbcType="DECIMAL" property="resultStatus" />
+    <result column="INST_ID" jdbcType="VARCHAR" property="instId" />
+    <result column="CHECK_TIME" jdbcType="TIMESTAMP" property="checkTime" />
+    <result column="DEAL_TIME" jdbcType="TIMESTAMP" property="dealTime" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+    <result column="SEND_STATUS" jdbcType="DECIMAL" property="sendStatus" />
+    <result column="SEND_NAME" jdbcType="VARCHAR" property="sendName" />
+    <result column="SEND_TIME" jdbcType="TIMESTAMP" property="sendTime" />
+    <result column="DEAL_NAME" jdbcType="VARCHAR" property="dealName" />
+    <result column="INST_STATUS" jdbcType="VARCHAR" property="instStatus" />
+    <result column="INST_CODE" jdbcType="VARCHAR" property="instCode" />
+    <result column="OMBINED_CODE" jdbcType="VARCHAR" property="ombinedCode" />
+    <result column="TRADE_DATE" jdbcType="DECIMAL" property="tradeDate" />
+    <result column="FUND_CODE" jdbcType="VARCHAR" property="fundCode" />
+    <result column="INST_CREATE_NAME" jdbcType="VARCHAR" property="instCreateName" />
+    <result column="INST_EXECUTION_NAME" jdbcType="VARCHAR" property="instExecutionName" />
+    <result column="SECU_CODE" jdbcType="VARCHAR" property="secuCode" />
+    <result column="TRADE_TYPE_CODE" jdbcType="DECIMAL" property="tradeTypeCode" />
+    <result column="AMT" jdbcType="DECIMAL" property="amt" />
+    <result column="QTY" jdbcType="DECIMAL" property="qty" />
+    <result column="SECU_TYPE" jdbcType="DECIMAL" property="secuType" />
+    <result column="O32_SECU_CODE" jdbcType="VARCHAR" property="o32SecuCode" />
+    <result column="O32_SECU_NAME" jdbcType="VARCHAR" property="o32SecuName" />
+    <result column="IS_LONG_INST" jdbcType="DECIMAL" property="isLongInst" />
+    <result column="PRICE" jdbcType="DECIMAL" property="price" />
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="TYPE_ID" jdbcType="VARCHAR" property="typeId" />
+    <result column="CUE_FORMAT" jdbcType="VARCHAR" property="cueFormat" />
+    <result column="INFO" jdbcType="VARCHAR" property="info" />
+    <result column="START_TIME" jdbcType="VARCHAR" property="startTime" />
+    <result column="END_TIME" jdbcType="VARCHAR" property="endTime" />
+    <result column="TYPE_NAME" jdbcType="VARCHAR" property="typeName" />
+    <result column="SPEED" jdbcType="DECIMAL" property="speed" />
+    <result column="VOLUME" jdbcType="DECIMAL" property="volume" />
+    <result column="ERROR_MESSAGE" jdbcType="CLOB" property="errorMessage" />
+  </resultMap>
+  <select id="queryLight" resultType="com.iquantex.tspweb.param.LightVO">
+    SELECT * FROM (
+    SELECT RULE_RESULT_ID, CHECK_TIME, INST_CODE, RULE_ID, NAME rule_name, RESULT_STATUS AS STATUS FROM RESULT_ALL_V
+    ORDER BY RULE_RESULT_ID DESC
+    ) WHERE rownum &lt;= #{lastNum} AND RULE_ID != 'R003' AND RULE_ID != 'R004'  AND RULE_ID != 'R005'
+  </select>
+
+  <select id="queryEtfDeviationLight" resultType="com.iquantex.tspweb.param.EtfDeviationLightVO">
+    select
+        a.rule_result_id,
+        a.rule_id,
+        a.result_status,
+        a.check_time,
+        a.status,
+        a.cmdtype,
+        a.indexchg,
+        a.indexprice,
+        a.indexprecloseprice,
+        a.indexcode,
+        a.threshold,
+        a.prenav,
+        a.iopvchg,
+        a.etfdeviation,
+        a.fundcode,
+        a.iopv,
+        a.etfvolume20deviation,
+        a.etflastprice,
+        a.etfpremiumdiscount,
+        a.etfvolume,
+        a.etf20avgvolume,
+        a.pcfdt,
+        a.navpercu,
+        a.estmcshcmpn,
+        a.dvdnamnt,
+        a.cnstmrktvl,
+        a.cnstcrrnrt,
+        a.chckmrgn,
+        a.prchrdmpflg,
+        a.crtnrdmpunt,
+        a.fundname,
+        b.coverage
+     from ETF_DEVIATION_RESULT_V a
+     left join etf_available_stock b
+     on a.FUNDCODE=b.fundcode
+  </select>
+
+</mapper>

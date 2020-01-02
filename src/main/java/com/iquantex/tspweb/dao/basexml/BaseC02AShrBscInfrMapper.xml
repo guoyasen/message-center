@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iquantex.tspweb.dao.java.C02AShrBscInfrMapper">
+    <resultMap id="BaseResultMap" type="com.iquantex.tspweb.model.C02AShrBscInfr">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="SCRT_CD" jdbcType="VARCHAR" property="scrtCd"/>
+        <result column="SCRT_ABBR" jdbcType="VARCHAR" property="scrtAbbr"/>
+        <result column="CMPN_CHNS_NM" jdbcType="VARCHAR" property="cmpnChnsNm"/>
+        <result column="CMPN_ENGL_NM" jdbcType="VARCHAR" property="cmpnEnglNm"/>
+        <result column="TRDN_CD" jdbcType="VARCHAR" property="trdnCd"/>
+        <result column="EXCH_CD" jdbcType="VARCHAR" property="exchCd"/>
+        <result column="IPO_SCTR_TYP" jdbcType="VARCHAR" property="ipoSctrTyp"/>
+        <result column="IST_DT" jdbcType="VARCHAR" property="istDt"/>
+        <result column="CNCL_DT" jdbcType="VARCHAR" property="cnclDt"/>
+        <result column="CRRN_CD" jdbcType="VARCHAR" property="crrnCd"/>
+        <result column="ABBR" jdbcType="VARCHAR" property="abbr"/>
+        <result column="IPO_SCTR" jdbcType="VARCHAR" property="ipoSctr"/>
+        <result column="HK_STCK_CNNC_PRGR" jdbcType="VARCHAR" property="hkStckCnncPrgr"/>
+        <result column="BTCH_DT" jdbcType="TIMESTAMP" property="btchDt"/>
+        <result column="ETL_SRC_TBL_NM" jdbcType="VARCHAR" property="etlSrcTblNm"/>
+        <result column="ETL_JOB_NM" jdbcType="VARCHAR" property="etlJobNm"/>
+    </resultMap>
+
+    <select id="getSecuDict" resultType="com.iquantex.tspweb.param.DictoryVO">
+        select
+          SCRT_CD as id,
+          SCRT_ABBR as name
+        from ${tsp_c}.c02_a_shr_bsc_infr
+        where
+            1 = 1
+          <if test="null != code">
+              AND id = #{code}
+          </if>
+          <if test="null != name">
+              AND name = #{name}
+          </if>
+    </select>
+
+</mapper>
