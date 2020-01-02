@@ -17,6 +17,7 @@
     </parent>
 
     <properties>
+        <skipTests>true</skipTests>
         <tsp-api.version>2.0.1-SNAPSHOT</tsp-api.version>
         <tsp-const-api.version>2.0.1-SNAPSHOT</tsp-const-api.version>
         <tsp-event.version>1.5.0-SNAPSHOT</tsp-event.version>
