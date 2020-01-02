@@ -1,10 +1,12 @@
-FROM 192.168.41.41:5000/msa/openjdk:1.8.201
-ENV TZ=Asia/Shanghai
-VOLUME /tmp
-ADD ./target/app.jar app.jar
-ADD ./docker/cfg/  ./cfg
-
-USER root
-RUN chown -R msaadm:msaadm /home/msaadm
-USER msaadm
-ENTRYPOINT java -jar -Xmx${MEMORY_MB}m -Xms${MEMORY_MB}m -Denv=${APOLLO_ENV} -D${APOLLO_ENV}_meta=${APOLLO} app.jar
+FROM harbor.iquantex.com/base_images/openjdk:8u212-jre-alpine
+LABEL MAINTAINER="shengquan"
+COPY entrypoint.sh /entrypoint.sh
+COPY app.jar /opt/deployments/app.jar
+WORKDIR /opt/deployments
+RUN chmod +x /entrypoint.sh \
+    && chgrp -R 0 /opt/deployments/ \
+    && chmod -R g=u /opt/deployments \
+    && addgroup daemon root \
+    && chmod g+w /etc/passwd
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["--","java","-jar","-XX:+UnlockExperimentalVMOptions","-XX:+UseCGroupMemoryLimitForHeap","-XX:MaxRAMFraction=2","-XshowSettings:vm","/opt/deployments/app.jar"]
