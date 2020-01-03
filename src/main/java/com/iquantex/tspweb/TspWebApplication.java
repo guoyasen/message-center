@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ServletComponentScan
 @EnableScheduling
 @MapperScan("com.iquantex.tspweb.dao")
-@ComponentScan(basePackages = {"com.iquantex.tspweb.common","com.iquantex.tspweb.service","com.iquantex.tspweb.config","com.iquantex.tspweb.consumer"})
+@ComponentScan(basePackages = {"com.iquantex.tspweb.controller","com.iquantex.tspweb.common","com.iquantex.tspweb.service","com.iquantex.tspweb.config","com.iquantex.tspweb.consumer"})
 @SpringBootApplication(exclude = MongoAutoConfiguration.class)
 public class TspWebApplication {
 
