@@ -306,7 +306,7 @@ public class EventBusConsumer {
                 messagingTemplate.convertAndSendToUser(user.getUserId(),"/queue/instInfo",record.value());
             }
             for(TspUser user:users){
-                messagingTemplate.convertAndSendToUser(user.getUserId(),"/queue/rule_result/light","mockEvent:"+record.value());
+                messagingTemplate.convertAndSendToUser(user.getUserId(),"/queue/rule_result/light","mock message for testing");
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);
