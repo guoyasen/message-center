@@ -1,7 +1,7 @@
-package com.iquantex.stompwebsocket.interceptor.websocket;
+package com.iquantex.messagecenter.interceptor.websocket;
 
-import com.iquantex.stompwebsocket.common.Constants;
-import com.iquantex.stompwebsocket.common.SpringContextUtils;
+import com.iquantex.messagecenter.common.Constants;
+import com.iquantex.messagecenter.common.SpringContextUtils;
 import com.iquantex.web.framework.util.SessionData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

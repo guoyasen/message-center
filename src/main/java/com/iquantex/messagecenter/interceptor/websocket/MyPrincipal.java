@@ -1,4 +1,4 @@
-package com.iquantex.stompwebsocket.interceptor.websocket;
+package com.iquantex.messagecenter.interceptor.websocket;
 
 import java.security.Principal;
 

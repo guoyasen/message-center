@@ -1,4 +1,4 @@
-package com.iquantex.stompwebsocket;
+package com.iquantex.messagecenter;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

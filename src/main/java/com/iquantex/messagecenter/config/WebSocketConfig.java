@@ -1,8 +1,8 @@
-package com.iquantex.stompwebsocket.config;
+package com.iquantex.messagecenter.config;
 
-import com.iquantex.stompwebsocket.interceptor.websocket.AuthHandshakeInterceptor;
-import com.iquantex.stompwebsocket.interceptor.websocket.MyChannelInterceptor;
-import com.iquantex.stompwebsocket.interceptor.websocket.MyHandshakeHandler;
+import com.iquantex.messagecenter.interceptor.websocket.AuthHandshakeInterceptor;
+import com.iquantex.messagecenter.interceptor.websocket.MyChannelInterceptor;
+import com.iquantex.messagecenter.interceptor.websocket.MyHandshakeHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.ChannelRegistration;

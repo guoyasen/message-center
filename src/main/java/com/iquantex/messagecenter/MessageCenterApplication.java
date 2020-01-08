@@ -1,4 +1,4 @@
-package com.iquantex.stompwebsocket;
+package com.iquantex.messagecenter;
 
 import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import org.springframework.boot.SpringApplication;

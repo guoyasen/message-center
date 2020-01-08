@@ -1,7 +1,7 @@
-package com.iquantex.stompwebsocket.consumer;
+package com.iquantex.messagecenter.consumer;
 
-import com.iquantex.stompwebsocket.service.feignclient.bean.User;
-import com.iquantex.stompwebsocket.service.feignclient.service.UserDataService;
+import com.iquantex.messagecenter.service.feignclient.bean.User;
+import com.iquantex.messagecenter.service.feignclient.service.UserDataService;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

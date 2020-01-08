@@ -1,4 +1,4 @@
-package com.iquantex.stompwebsocket.service.feignclient.bean;
+package com.iquantex.messagecenter.service.feignclient.bean;
 
 import lombok.Getter;
 import lombok.Setter;

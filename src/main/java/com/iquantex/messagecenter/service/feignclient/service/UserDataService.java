@@ -1,7 +1,7 @@
-package com.iquantex.stompwebsocket.service.feignclient.service;
+package com.iquantex.messagecenter.service.feignclient.service;
 
-import com.iquantex.stompwebsocket.service.feignclient.config.ServiceContext;
-import com.iquantex.stompwebsocket.service.feignclient.config.ServiceName;
+import com.iquantex.messagecenter.service.feignclient.config.ServiceContext;
+import com.iquantex.messagecenter.service.feignclient.config.ServiceName;
 import com.iquantex.web.framework.bean.RpcResultObj;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;

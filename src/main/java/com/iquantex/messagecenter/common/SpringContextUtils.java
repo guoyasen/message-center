@@ -1,4 +1,4 @@
-package com.iquantex.stompwebsocket.common;
+package com.iquantex.messagecenter.common;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;

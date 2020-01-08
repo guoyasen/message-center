@@ -1,4 +1,4 @@
-package com.iquantex.stompwebsocket.interceptor.websocket;
+package com.iquantex.messagecenter.interceptor.websocket;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

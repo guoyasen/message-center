@@ -1,4 +1,4 @@
-package com.iquantex.stompwebsocket.common;
+package com.iquantex.messagecenter.common;
 
 /**
  * 公共常量类
