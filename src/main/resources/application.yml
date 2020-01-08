@@ -1,0 +1,54 @@
+server:
+  port: 7001
+  servlet:
+    context-path: /message-center
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  kafka:
+    bootstrap-servers: 10.116.18.46:9092
+    template:
+      default-topic: calendar-calendarEvent
+    consumer:
+      group-id: message-center
+      enable-auto-commit: true
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-commit-interval: 100
+      auto-offset-reset: earliest
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://eureka-dev-debug.bj.iquantex.com/eureka
+  instance:
+    prefer-ip-address: true
+
+quantex:
+  application:
+    name: user-data-service
+    jwt-secret: quantex
+    env: dev
+  mybatis:
+    mapper-locations:
+      - classpath:com/iquantex/web/framework/dao/basexml/*.xml
+      - classpath:com/iquantex/web/framework/dao/xml/*.xml
+      - classpath:com/iquantex/common/dao/*/basexml/*.xml
+      - classpath:com/iquantex/common/dao/*/xml/*.xml
+    type-aliases-packages:
+      - com.iquantex.web.framework.model
+      - com.iquantex.common.model
+    base-packages:
+      - com.iquantex.web.framework.dao.java
+      - com.iquantex.common.dao
+    properties:
+      ORDER: BEFORE
+  web:
+    framework:
+      auth-filter:
+        enabled: true
