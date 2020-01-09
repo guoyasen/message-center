@@ -1,7 +1,5 @@
 package com.iquantex.messagecenter.interceptor.websocket;
 
-import com.iquantex.messagecenter.common.Constants;
-import com.iquantex.messagecenter.common.SpringContextUtils;
 import com.iquantex.web.framework.util.SessionData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +8,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
 
-import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.text.MessageFormat;
 import java.util.Map;
@@ -26,10 +23,9 @@ public class MyHandshakeHandler extends DefaultHandshakeHandler{
 
     @Override
     protected Principal determineUser(ServerHttpRequest request, WebSocketHandler wsHandler, Map<String, Object> attributes) {
-        HttpSession session = SpringContextUtils.getSession();
-        Long userId = (Long) session.getAttribute(Constants.SESSION_USER);
+        Long userId = SessionData.getUserId();
 
-        if(null != userId && userId.equals(SessionData.getUserId())){
+        if(null != userId){
             logger.debug(MessageFormat.format("WebSocket连接开始创建Principal，用户id：{0}", userId));
             return new MyPrincipal(userId.toString());
         }else{

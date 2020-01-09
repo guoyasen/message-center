@@ -1,17 +1,19 @@
 package com.iquantex.messagecenter.service.feignclient.service;
 
+import com.iquantex.messagecenter.service.feignclient.config.FeignConfig;
 import com.iquantex.messagecenter.service.feignclient.config.ServiceContext;
 import com.iquantex.messagecenter.service.feignclient.config.ServiceName;
 import com.iquantex.web.framework.bean.RpcResultObj;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 用户服务
  */
 @Service
-@FeignClient(name = ServiceName.USER_DATA_SERVICE, path = ServiceContext.USER_DATA_SERVICE_PATH)
+@FeignClient(name = ServiceName.USER_DATA_SERVICE, path = ServiceContext.USER_DATA_SERVICE_PATH,configuration = FeignConfig.class)
 public interface UserDataService {
 
     /**

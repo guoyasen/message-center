@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * kafka consumer 将kafka消息转发器
+ * kafka consumer kafka消息转发器
  *
  * @author qingjie.du
  */
