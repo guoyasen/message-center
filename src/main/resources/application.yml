@@ -31,7 +31,7 @@ eureka:
 
 quantex:
   application:
-    name: user-data-service
+    name: message-center
     jwt-secret: quantex
     env: dev
   mybatis:
