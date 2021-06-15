@@ -17,6 +17,7 @@ spring:
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       auto-commit-interval: 100
       auto-offset-reset: earliest
+      topic: message_push_data_topic_test
   jackson:
     serialization:
       write-dates-as-timestamps: true

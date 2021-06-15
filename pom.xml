@@ -211,6 +211,13 @@
 			<optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
 		</dependency>
 
+		<!-- message-center-api -->
+		<dependency>
+			<groupId>com.iquantex</groupId>
+			<artifactId>message-center-api</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
 		<!-- MyBatis Generator -->
 	</dependencies>
 
