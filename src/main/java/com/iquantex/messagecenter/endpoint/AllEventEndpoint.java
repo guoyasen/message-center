@@ -26,6 +26,7 @@ public class AllEventEndpoint {
 
 	@OnOpen
 	public void handleOpen(Session session, EndpointConfig endpointConfig){
+
 		sessions.add(session);
 		LOG.info("websocket连接成功...userId:{}，sessionId:{}", SessionData.getUserId(), session.getId());
 	}
